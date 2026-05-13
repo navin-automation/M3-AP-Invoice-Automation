@@ -39,9 +39,39 @@ To ensure smooth execution, verify the following prerequisites:
    
 http://googleusercontent.com/immersive_entry_chip/0
 
+
+## ⚙️ Configuration (One-Time Setup)
+
+### 1. UI Calibration
+Screen resolutions vary, so you must capture fresh screenshots from your machine:
+* [cite_start]Take screenshots of buttons and hotel names[cite: 39].
+* [cite_start]Use `Windows + Shift + S` for tight, clean captures (no extra white space)[cite: 42, 43].
+* [cite_start]Save images in the `/images` folder using provided naming conventions[cite: 59].
+
+### 2. Mouse Calibration
+Use the included tool to find your specific horizontal coordinate for checkboxes:
+1. [cite_start]Run `python get_mouse.py`[cite: 48].
+2. [cite_start]Hover over the M3 grid checkbox and note the X-coordinate[cite: 50, 51].
+3. [cite_start]Update `CHECKBOX_X_COORD` in `Bot.py`[cite: 54, 55].
+
 ---
 
-### 💡 Pro-Tip:
-Jab aap ise GitHub par edit karoge, toh **"Preview"** tab par click karke check karna. Ye ekdum professional "Landing Page" jaisa dikhega. 
+## 🏃 How to Run
 
-Aapka project ab GitHub par ekdum "Elegantly" complete ho gaya hai! 🔥🚀
+1. [cite_start]**Prepare Data:** Update `AP_Invoice_Data.xlsx` with daily tasks and close the file[cite: 135, 141].
+2. [cite_start]**Auto-Login:** Run `python M3Login.py` to open Accounting Core[cite: 145].
+3. [cite_start]**Trigger Bot:** Run `python Bot.py` and immediately switch to the M3 window[cite: 152, 153].
+4. [cite_start]**Hands-Off:** Do **not** move the mouse or use the keyboard while the bot is running[cite: 157].
+
+> [cite_start]**💡 Emergency Stop:** Move your mouse to the **Top-Left Corner** of the screen to halt automation[cite: 160].
+
+---
+
+## 🛠️ Troubleshooting Guide
+
+| Issue | Cause | Solution |
+| :--- | :--- | :--- |
+| `ModuleNotFoundError` | Missing library | [cite_start]Re-run pip install command [cite: 229] |
+| `TesseractNotFoundError` | Incorrect OCR path | [cite_start]Verify installation in C:\Program Files [cite: 229] |
+| Bot clicks wrong area | Scaling issue | [cite_start]Change Windows Display Scale to 100% [cite: 229] |
+| Image Not Found | Missing/Renamed PNG | [cite_start]Check `/images` folder for correct filenames [cite: 229] |
