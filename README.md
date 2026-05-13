@@ -6,29 +6,62 @@ A high-performance Python RPA bot for **M3 Accounting Core**, featuring ultra-fa
 
 ## 🛠️ Environment
 
-- **Platform:** Citrix Workspace / M3 Accounting Core  
-- **Language:** Python 3.10+  
-- **Key Libraries:** PyAutoGUI, OpenCV, Tesseract OCR, Pandas  
+- **Platform:** Citrix Workspace / M3 Accounting Core
+- **Language:** Python 3.10+
+- **Key Libraries:** PyAutoGUI, OpenCV, Tesseract OCR, Pandas
 
 ---
 
-## ✨ Key Capabilities
+## ✨ Key Features
 
-- **Automatic Hotel Detection:** Smart navigation through property dropdowns  
-- **Vendor-Based Invoice Posting:** Matches vendors and posts invoices accurately  
-- **Ultra-Fast OCR:** Uses Tesseract for real-time screen scanning  
-- **Smart Error Handling:** Self-healing UI navigation with automatic skipping for already posted invoices  
-- **Execution Dashboard:** Real-time terminal logs for monitoring status  
+- ✅ Automatic Hotel Detection
+- ✅ Vendor-Based Invoice Posting
+- ✅ Ultra-Fast OCR Scanning
+- ✅ Smart Error Handling
+- ✅ Auto Skip for Already Posted Invoices
+- ✅ Real-Time Execution Logs
+- ✅ Self-Healing UI Navigation
 
 ---
 
-## 📋 System Requirements
+# 📋 System Requirements
 
-To ensure smooth execution, verify the following prerequisites:
+Before running the bot, ensure the following requirements are met:
 
-- **Display Scale:** Windows Display Scale must be set strictly to **100%**  
-- **Monitor:** Application must run on the **Primary Monitor**  
-- **Tesseract Path:** Must be installed at:
+- Windows PC with stable internet connection
+- Citrix Workspace / M3 Accounting Core access
+- Python 3.10 or higher
+- Tesseract OCR installed
+- Windows Display Scale set to **100%**
+- Citrix application running on the **Primary Monitor**
+
+---
+
+# 🚀 Installation Guide
+
+## 1️⃣ Install Python
+
+Download Python from the official website:
+
+https://www.python.org/downloads/
+
+### ⚠️ Important
+
+During installation, make sure to enable:
+
+```txt
+✅ Add Python to PATH
+```
+
+---
+
+## 2️⃣ Install Tesseract OCR
+
+Download Tesseract OCR from:
+
+https://github.com/UB-Mannheim/tesseract/wiki
+
+Install it in the default location:
 
 ```txt
 C:\Program Files\Tesseract-OCR\
@@ -36,25 +69,9 @@ C:\Program Files\Tesseract-OCR\
 
 ---
 
-## 🚀 Setup & Installation
+## 3️⃣ Install Required Libraries
 
-### 1. Install Python
-
-Ensure **"Add Python to PATH"** is checked during installation.
-
----
-
-### 2. Install Tesseract OCR
-
-Download from the official repository:
-
-https://github.com/UB-Mannheim/tesseract/wiki
-
----
-
-### 3. Install Dependencies
-
-Run the following commands:
+Open Command Prompt and run:
 
 ```bash
 python -m pip install playwright pyautogui pandas pytesseract opencv-python openpyxl numpy
@@ -64,16 +81,36 @@ python -m playwright install
 
 ---
 
-## ⚙️ Configuration (One-Time Setup)
+# 📁 Required Folder Structure
 
-### 1. UI Calibration
+Keep all bot files inside a single folder.
 
-Screen resolutions vary, so you must capture fresh screenshots from your machine.
+Example:
 
-- Take screenshots of:
-  - Buttons
-  - Hotel names
-  - Required UI elements
+```txt
+C:\Users\<YourUsername>\
+```
+
+### Required Files
+
+```txt
+Bot.py
+get_mouse.py
+AP_Invoice_Data.xlsx
+/images
+```
+
+⚠️ Do NOT rename or delete PNG image files.
+
+---
+
+# ⚙️ First-Time Setup
+
+## 🖼️ UI Calibration
+
+Since Citrix rendering and resolutions vary across systems, you must capture fresh screenshots from your own machine.
+
+### Screenshot Rules
 
 - Use:
 
@@ -81,51 +118,37 @@ Screen resolutions vary, so you must capture fresh screenshots from your machine
 Windows + Shift + S
 ```
 
-for tight and clean captures (avoid extra white space).
-
-- Save all images inside the:
-
-```txt
-/images
-```
-
-folder using the required naming conventions.
+- Take tight and clean screenshots
+- Avoid extra white space
+- Save images inside the `/images` folder
 
 ---
 
-### 2. Mouse Calibration
+## 🎯 Mouse Calibration
 
-Use the included utility tool to find the correct horizontal checkbox coordinate.
-
-#### Steps
-
-1. Run:
+Run the calibration tool:
 
 ```bash
 python get_mouse.py
 ```
 
-2. Hover over the M3 grid checkbox.
+### Steps
 
-3. Note the displayed **X-coordinate**.
-
-4. Update:
+1. Open the M3 invoice grid
+2. Hover your mouse over the empty checkbox
+3. Note the displayed X-coordinate
+4. Open `Bot.py`
+5. Update:
 
 ```python
-CHECKBOX_X_COORD
+CHECKBOX_X_COORD = 327
 ```
 
-inside:
-
-```txt
-Bot.py
-```
+Replace `327` with your own coordinate.
 
 ---
 
-## 🏃 How to Run
-
-### Step 1 — Prepare Data
+# 📊 Excel File Rules
 
 Update:
 
@@ -133,23 +156,20 @@ Update:
 AP_Invoice_Data.xlsx
 ```
 
-with the latest invoice data and close the file before running the bot.
+with your daily invoice data.
+
+### Important Rules
+
+- Do NOT change column names
+- Ensure Property Name matches the system exactly
+- Ensure Vendor Name matches exactly
+- Save and CLOSE Excel before running the bot
 
 ---
 
-### Step 2 — Auto Login
+# 🏃 How to Run
 
-Run:
-
-```bash
-python M3Login.py
-```
-
-This will automatically open M3 Accounting Core.
-
----
-
-### Step 3 — Trigger Bot
+## Start the Bot
 
 Run:
 
@@ -157,47 +177,77 @@ Run:
 python Bot.py
 ```
 
-Immediately switch to the M3 window after starting the bot.
+Immediately switch to the M3 Accounting Core window.
 
 ---
 
-### Step 4 — Hands-Free Execution
+# ⚠️ Important Execution Rules
 
-⚠️ Do **NOT**:
+While the bot is running:
 
-- Move the mouse
-- Use the keyboard
-- Minimize the application
-
-while the bot is running.
-
----
-
-## 🛑 Emergency Stop
-
-Move your mouse to the **Top-Left Corner** of the screen to instantly stop the automation.
+- ❌ Do NOT move the mouse
+- ❌ Do NOT type on keyboard
+- ❌ Do NOT minimize Citrix
+- ❌ Do NOT switch applications
 
 ---
 
-## 🛠️ Troubleshooting Guide
+# 🛑 Emergency Stop
+
+Move your mouse to the:
+
+```txt
+TOP LEFT CORNER
+```
+
+of the screen to instantly stop automation.
+
+---
+
+# 📜 Execution Logs
+
+The terminal provides real-time logs including:
+
+- Current Property
+- Current Vendor
+- Invoice Detection
+- Posting Status
+- Success / Failed Reports
+
+Example:
+
+```txt
+✅ SUCCESS: Invoice Posted
+⚠️ ALERT: No Pending Invoice
+🚀 BATCH POSTED SUCCESSFULLY
+```
+
+---
+
+# 🛠️ Troubleshooting
 
 | Issue | Cause | Solution |
 | :--- | :--- | :--- |
-| `ModuleNotFoundError` | Missing Python library | Re-run the pip install command |
-| `TesseractNotFoundError` | Incorrect OCR installation path | Verify installation inside `C:\Program Files\Tesseract-OCR\` |
-| Bot clicks wrong area | Display scaling issue | Change Windows Display Scale to **100%** |
-| Image Not Found | Missing or renamed PNG file | Check filenames inside the `/images` folder |
+| ModuleNotFoundError | Missing Python library | Re-run pip install command |
+| OpenCV Error | OpenCV not installed correctly | Run `pip install opencv-python` |
+| TesseractNotFoundError | Incorrect OCR path | Verify Tesseract installation |
+| Bot clicks wrong area | Display scaling issue | Set Windows Scale to 100% |
+| Image Not Found | Missing PNG file | Verify image filenames |
+| openpyxl Import Failed | openpyxl missing | Run `pip install openpyxl` |
 
 ---
 
-## 📌 Notes
+# 🤖 Automation Capabilities
 
-- Best performance is achieved on stable Citrix sessions.
-- Avoid changing monitor resolution after calibration.
-- Always keep required PNG assets updated for accurate image detection.
+- Automatic Hotel Detection
+- Vendor-Based Invoice Posting
+- OCR-Based Invoice Recognition
+- Smart Invoice Matching
+- Auto Recovery Handling
+- Real-Time Execution Dashboard
 
 ---
 
-## 📄 License
+# 📄 License
 
 This project is intended for internal automation and workflow optimization purposes.
